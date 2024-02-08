@@ -42,7 +42,7 @@ final class UnitFutureTest: XCTestCase {
     func testUnitFutureEventError() {
         let error = Error()
         let future = UnitFuture<String>(event: .failed(.error(error)))
-        expect(future.test().error).to(beIdenticalTo(error))
+        expect(future.test().error as! UnitFutureTest.Error?).to(beIdenticalTo(error))
         expect(future.done) == true
     }
 

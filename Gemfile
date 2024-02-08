@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
-ruby "~>2.6.0"
+ruby "~>3.1.4"
 
-gem "fastlane", "~>2.114"
-gem "jazzy", "~>0.11"
-gem "xcodeproj", "~>1.7"
+gem "fastlane", "~>2.219"
+gem "jazzy", "~>0.14"
+gem "xcodeproj", "~>1.24"

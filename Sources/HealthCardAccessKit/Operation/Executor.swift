@@ -59,7 +59,7 @@ public enum Executor: ExecutorType {
 
 extension Executor {
     /// Serial queue executor
-    public static let serial = Executor.queued(OS_dispatch_queue_serial(label: "Serial"))
+    public static let serial = Executor.queued(DispatchSerialQueue(label: "Serial"))
     /// Queue on dispatch queue with `.userInteractive` qos
     public static let userInteractive = Executor.queued(DispatchQueue.global(qos: .userInteractive))
     /// Queue on dispatch queue with `.userInitiated` qos

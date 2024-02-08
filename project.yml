@@ -1,12 +1,14 @@
 name: HealthCardAccessKit
 options:
-  bundleIdPrefix: de.gematik.ti.healthcardaccess
+  bundleIdPrefix: de.silpion.ti.healthcardaccess
   deploymentTarget:
-    macOS: 10.12
-    iOS: 12.1
+    macOS: 10.15
+    iOS: 17.2
   minimumXcodeGenVersion: 2.3.0
 settings:
   base:
+    GENERATE_INFOPLIST_FILE: YES
+    DEVELOPMENT_TEAM: 67X5G8WXSG
     SWIFT_VERSION: 5.0
     ALWAYS_SEARCH_USER_PATHS: NO
     FRAMEWORK_SEARCH_PATHS: "$(inherited)"
@@ -24,16 +26,21 @@ targets:
     sources:
       - Sources
     dependencies:
-      - carthage: CardReaderProviderApi
+      - framework: "Carthage/Build/CardReaderProviderApi.xcframework"
         embed: true
-      - carthage: CardReaderAccess
+        codeSign: true
+      - framework: "Carthage/Build/CardReaderAccess.xcframework"
         embed: true
-      - carthage: GemCommonsKit
+        codeSign: true
+      - framework: "Carthage/Build/GemCommonsKit.xcframework"
         embed: true
-      - carthage: ASN1Kit
+        codeSign: true
+      - framework: "Carthage/Build/ASN1Kit.xcframework"
         embed: true
-      - carthage: DataKit
+        codeSign: true
+      - framework: "Carthage/Build/DataKit.xcframework"
         embed: true
+        codeSign: true
     transitivelyLinkDependencies: true
     scheme:
       testTargets:
@@ -52,6 +59,10 @@ targets:
           - Util/HCATerminalTestCase.swift
     dependencies:
       - target: HealthCardAccessKit_${platform}
-      - carthage: ObjCCommonsKit
-      - carthage: Nimble
+      - framework: "Carthage/Build/ObjCCommonsKit.xcframework"
+        embed: true
+        codeSign: true
+      - framework: "Carthage/Build/Nimble.xcframework"
+        embed: true
+        codeSign: true
 buildImplicitDependencies: true

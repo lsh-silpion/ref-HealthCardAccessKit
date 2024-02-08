@@ -52,7 +52,7 @@ final class FutureTypeTest: XCTestCase {
     func testFutureTypeError() {
         let error = Error()
         let future: Future<String> = Future<String>.error(error)
-        expect(future.test().error).to(beIdenticalTo(error))
+        expect(future.test().error as! FutureTypeTest.Error).to(beIdenticalTo(error))
     }
 
     func testFutureMap() {

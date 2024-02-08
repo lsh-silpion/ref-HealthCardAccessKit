@@ -98,7 +98,9 @@ final class ExecutorTest: XCTestCase {
 
         let eventBlock = { (value: FutureEvent<[Int]>) -> Void in
             if let value = value.value {
-                syncVar.value = value
+                syncVar.set {_ in 
+                    value
+                }
             }
         }
 
